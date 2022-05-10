@@ -1,18 +1,58 @@
 <template>
   <div class="text-right">
-    <button type="button" class="btn btn-sm" @click="changeCurrentType('all')">
+    <button
+      type="button"
+      :class="[
+        currentType === 'all'
+          ? 'col-2 btn btn-secondary'
+          : 'col-2 btn btn-outline-secondary',
+      ]"
+      @click="changeCurrentType('all')"
+    >
       전체
     </button>
-    <button type="button" class="btn btn-sm" @click="changeCurrentType('공부')">
+    <button
+      type="button"
+      :class="[
+        currentType === '공부'
+          ? 'col-2 btn btn-secondary'
+          : 'col-2 btn btn-outline-secondary',
+      ]"
+      @click="changeCurrentType('공부')"
+    >
       공부
     </button>
-    <button type="button" class="btn btn-sm" @click="changeCurrentType('업무')">
+    <button
+      type="button"
+      :class="[
+        currentType === '업무'
+          ? 'col-2 btn btn-secondary'
+          : 'col-2 btn btn-outline-secondary',
+      ]"
+      @click="changeCurrentType('업무')"
+    >
       업무
     </button>
-    <button type="button" class="btn btn-sm" @click="changeCurrentType('건강')">
+    <button
+      type="button"
+      :class="[
+        currentType === '건강'
+          ? 'col-2 btn btn-secondary'
+          : 'col-2 btn btn-outline-secondary',
+      ]"
+      @click="changeCurrentType('건강')"
+    >
       건강
     </button>
-    <button type="button" class="btn btn-sm" @click="changeCurrentType('일상')">
+    <button
+      type="button"
+      :class="[
+        currentType === '일상'
+          ? 'col-2 btn btn-secondary'
+          : 'col-2 btn btn-outline-secondary',
+      ]"
+      @click="changeCurrentType('일상')"
+    >
       일상
     </button>
   </div>
