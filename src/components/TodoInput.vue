@@ -1,21 +1,33 @@
 <template>
-  <div class="row justify-content-evenly">
-    <select class="col-2" v-model="category">
-      <option disabled value="">카테고리</option>
-      <option value="study">공부</option>
-      <option value="work">업무</option>
-      <option value="daily">일상</option>
-      <option value="health">건강</option>
-    </select>
-    <input
-      type="text"
-      class="col-8"
-      placeholder="해야할 일을 입력해주세요"
-      ref="userInput"
-      @keyup.enter="addTodo"
-      v-model="newTodoItem"
-    />
-    <button class="col-2" @click="addTodo">추가</button>
+  <div>
+    <div class="list-group mb-4">
+      <button
+        class="list-group-item text-left"
+        v-for="todo in activeTodoList"
+        :key="todo"
+        @click="toggleTodoState(todo)"
+      >
+        {{ todo.label }}
+      </button>
+    </div>
+    <div class="row justify-content-evenly">
+      <select class="col-2" v-model="category">
+        <option disabled value="">카테고리</option>
+        <option value="study">공부</option>
+        <option value="work">업무</option>
+        <option value="daily">일상</option>
+        <option value="health">건강</option>
+      </select>
+      <input
+        type="text"
+        class="col-8"
+        placeholder="해야할 일을 입력해주세요"
+        ref="userInput"
+        @keyup.enter="addTodo"
+        v-model="newTodoItem"
+      />
+      <button class="col-2" @click="addTodo">추가</button>
+    </div>
   </div>
 </template>
 
@@ -37,6 +49,21 @@ export default {
     },
   },
   methods: {
+    changeCurrentType(type) {
+      this.currentType = type;
+    },
+    addNewTodo() {
+      this.todoList.push({
+        type: this.category,
+        label: this.userInput,
+        state: "active",
+      });
+      this.userInput = "";
+      this.$refs.userInput.focus();
+    },
+    toggleTodoState(todo) {
+      todo.state = todo.state === "active" ? "done" : "active";
+    },
     addTodo() {
       //inputbox가 빈값인지 체크, 아니면 로직 수행
       if (this.newTodoItem !== "") {

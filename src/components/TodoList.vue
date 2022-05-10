@@ -16,16 +16,6 @@
       일상
     </button>
   </div>
-  <div class="list-group mb-4">
-    <button
-      class="list-group-item text-left"
-      v-for="todo in activeTodoList"
-      :key="todo"
-      @click="toggleTodoState(todo)"
-    >
-      {{ todo.label }}
-    </button>
-  </div>
 </template>
 
 <script>

@@ -3,8 +3,9 @@
 <template>
   <div id="app">
     <TodoHeader></TodoHeader>
-    <TodoInput></TodoInput>
     <TodoList></TodoList>
+    <TodoInput></TodoInput>
+
     <TodoFooter></TodoFooter>
   </div>
 </template>
